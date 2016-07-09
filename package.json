@@ -1,0 +1,42 @@
+{
+  "name": "redux-todomvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev_server": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test": "mocha --compilers js:babel-core/register --reqiure ./test/setup.js 'test/**/*.@(js|jsx)'",
+    "test:watch": "npm run test -- --watch --watch-extensions jsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.6.0",
+    "css-loader": "^0.23.1",
+    "jsdom": "^9.4.1",
+    "mocha": "^2.5.3",
+    "react-hot-loader": "^1.3.0",
+    "react-immutable-proptypes": "^1.7.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "todomvc-app-css": "^2.0.6"
+  }
+}
