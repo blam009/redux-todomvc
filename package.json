@@ -1,8 +1,12 @@
 {
   "name": "redux-todomvc",
   "version": "1.0.0",
-  "description": "",
+  "description": "React Redux Immutable TodoMVC",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blam009/redux-todomvc.git"
+  },
   "scripts": {
     "dev_server": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "mocha --compilers js:babel-core/register --reqiure ./test/setup.js 'test/**/*.@(js|jsx)'",
