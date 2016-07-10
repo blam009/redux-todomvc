@@ -20,17 +20,19 @@ class TodoList extends React.Component {
         return <section className="main">
             <ul className="todo-list">
                 {this.getItems().map(item =>
-                    <TodoItem
-                        key={item.get('text')}
-                        text={item.get('text')}
-                        isCompleted={this.isCompleted(item)}
-                        isEditing={item.get('editing')}
+                    <TodoItem key={item.get('text')}
+                              text={item.get('text')}
+                              isCompleted={this.isCompleted(item)}
+                              isEditing={item.get('editing')}
 
-                        // Passing down the callback functions
-                        toggleComplete={this.props.toggleComplete}
-                        deleteItem={this.props.deleteItem}
-                        editItem={this.props.editItem}
-                    />
+                              // Passing down the callback functions to TodoItem
+                              toggleComplete={this.props.toggleComplete}
+                              deleteItem={this.props.deleteItem}
+                              editItem={this.props.editItem}
+
+                              // Passing down the callback functions to TodoItem to TextInput
+                              doneEditing={this.props.doneEditing}
+                              cancelEditing={this.props.cancelEditing} />
                 )}
             </ul>
         </section>;
@@ -48,9 +50,14 @@ TodoList.propTypes = {
         })
     ).isRequired,
 
+    // TodoItem funcs
     toggleComplete: React.PropTypes.func,
     deleteItem: React.PropTypes.func,
-    editItem: React.PropTypes.func
+    editItem: React.PropTypes.func,
+
+    // TextInput funcs
+    doneEditing: React.PropTypes.func,
+    cancelEditing: React.PropTypes.func
 };
 
 export default TodoList;

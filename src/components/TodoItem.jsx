@@ -25,7 +25,11 @@ class TodoItem extends React.Component {
                 <button className="destroy"
                         onClick={() => this.props.deleteItem(this.props.id)}></button>
             </div>
-            <TextInput />
+            <TextInput text={this.props.text}
+
+                       // Passing down the callback functions to TextInput
+                       doneEditing={this.props.doneEditing}
+                       cancelEditing={this.props.cancelEditing} />
         </li>;
     }
 }
@@ -36,10 +40,14 @@ TodoItem.propTypes = {
     isCompleted: React.PropTypes.bool,
     isEditing: React.PropTypes.bool,
 
-    // Funcs
+    // TodoITem Funcs
     toggleComplete: React.PropTypes.func,
     deleteItem: React.PropTypes.func,
-    editItem: React.PropTypes.func
+    editItem: React.PropTypes.func,
+
+    // TextInput funcs
+    doneEditing: React.PropTypes.func,
+    cancelEditing: React.PropTypes.func
 };
 
 export default TodoItem;

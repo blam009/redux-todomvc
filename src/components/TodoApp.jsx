@@ -11,7 +11,17 @@ class TodoApp extends React.Component {
     render() {
         return <div>
             <section className="todoapp">
-                <TodoList filter={this.props.filter} todos={this.props.todos} />
+                <TodoList filter={this.props.filter}
+                          todos={this.props.todos}
+
+                          // TodoItem funcs
+                          toggleComplete={() => {console.log('=> toggleComplete()');}}
+                          deleteItem={() => {console.log('=> deleteItem()');}}
+                          editItem={() => {console.log('=> editItem()');}}
+
+                          // TextInput funcs
+                          doneEditing={() => {console.log('=> doneEditing');}}
+                          cancelEditing={() => {console.log('=> cancelEditing');}}/>
             </section>
         </div>;
     }
