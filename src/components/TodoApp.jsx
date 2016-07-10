@@ -24,7 +24,7 @@ TodoApp.propTypes = {
             id: React.PropTypes.number.isRequired,
             text: React.PropTypes.string.isRequired,
             status: React.PropTypes.string.isRequired,
-            editing: React.PropTypes.bool.isRequired
+            editing: React.PropTypes.bool
         })
     ).isRequired
 };
