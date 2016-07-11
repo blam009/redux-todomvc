@@ -1,5 +1,6 @@
 import React from 'react';
 
+import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 
 var ImmutablePropTypes = require('react-immutable-proptypes');
@@ -11,6 +12,7 @@ class TodoApp extends React.Component {
     render() {
         return <div>
             <section className="todoapp">
+                <TodoHeader addItem={(item) => {console.log('=> addItem(' + item + ')');}} />
                 <TodoList filter={this.props.filter}
                           todos={this.props.todos}
 
