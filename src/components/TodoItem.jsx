@@ -35,7 +35,7 @@ class TodoItem extends React.Component {
 }
 
 TodoItem.propTypes = {
-    id: React.PropTypes.string.number,
+    id: React.PropTypes.number,
     text: React.PropTypes.string.isRequired,
     isCompleted: React.PropTypes.bool,
     isEditing: React.PropTypes.bool,

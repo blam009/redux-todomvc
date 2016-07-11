@@ -17,7 +17,6 @@ class TextInput extends React.Component {
     render() {
         return <input className="edit"
                       autoFocus={true}
-                      value={this.props.text}
                       ref="itemInput"
                       type="text"
                       onKeyDown={this._handleKeyDown} />;
