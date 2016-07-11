@@ -2,6 +2,7 @@ import React from 'react';
 
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
+import Footer from './Footer';
 
 var ImmutablePropTypes = require('react-immutable-proptypes');
 
@@ -25,6 +26,7 @@ class TodoApp extends React.Component {
                           doneEditing={() => {console.log('=> doneEditing');}}
                           cancelEditing={() => {console.log('=> cancelEditing');}}/>
             </section>
+            <Footer />
         </div>;
     }
 }
