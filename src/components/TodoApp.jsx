@@ -10,7 +10,7 @@ var ImmutablePropTypes = require('react-immutable-proptypes');
 class TodoApp extends React.Component {
     constructor(props) {
         super(props);
-        this.getNbActiveItems = this.nbActiveitems.bind(this);
+        this.getNbActiveItems = this.getNbActiveItems.bind(this);
     }
     getNbActiveItems() {
         if (this.props.todos) {
