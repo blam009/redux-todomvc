@@ -2,13 +2,24 @@ import React from 'react';
 
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
+import TodoTools from './TodoTools';
 import Footer from './Footer';
 
 var ImmutablePropTypes = require('react-immutable-proptypes');
 
 class TodoApp extends React.Component {
-    getItems() {
-        return this.props.todos || [];
+    constructor(props) {
+        super(props);
+        this.getNbActiveItems = this.nbActiveitems.bind(this);
+    }
+    getNbActiveItems() {
+        if (this.props.todos) {
+            const activeItems = this.props.todos.filter(
+                (item) => item.get('status') === 'active'
+            );
+            return activeItems.size;
+        }
+        return 0;
     }
     render() {
         return <div>
@@ -25,6 +36,10 @@ class TodoApp extends React.Component {
                           // TextInput funcs
                           doneEditing={() => {console.log('=> doneEditing');}}
                           cancelEditing={() => {console.log('=> cancelEditing');}}/>
+                <TodoTools filter={this.props.filter}
+                           nbActiveItems={this.getNbActiveItems()}
+                           changeFilter={(filter) => {console.log('=> changeFilter(' + filter + ')');}}
+                           clearCompleted={() => {console.log('=> clearCompleted');}} />
             </section>
             <Footer />
         </div>;
