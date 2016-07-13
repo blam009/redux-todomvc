@@ -4,3 +4,10 @@ export function toggleComplete(id) {
         id
     };
 }
+
+export function changeFilter(filter) {
+    return {
+        type: 'CHANGE_FILTER',
+        filter
+    };
+}
