@@ -1,9 +1,11 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classNames from 'classnames';
 
 class TodoTools extends React.Component {
     constructor(props) {
         super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
         this.getNbItemsLeft = this.getNbItemsLeft.bind(this);
         this.setSelectedClass = this.setSelectedClass.bind(this);
     }

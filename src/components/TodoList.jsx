@@ -1,10 +1,14 @@
 import React from 'react';
-
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import TodoItem from './TodoItem';
 
 var ImmutablePropTypes = require('react-immutable-proptypes');
     
 class TodoList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
     getItems() {
         if (this.props.todos) {
             return this.props.todos.filter(
@@ -22,6 +26,7 @@ class TodoList extends React.Component {
                 {this.getItems().map(item =>
                     <TodoItem key={item.get('text')}
                               text={item.get('text')}
+                              id={item.get('id')}
                               isCompleted={this.isCompleted(item)}
                               isEditing={item.get('editing')}
 

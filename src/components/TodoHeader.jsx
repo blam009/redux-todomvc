@@ -1,9 +1,11 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 class TodoHeader extends React.Component {
     constructor(props) {
         super(props);
         this._handleKeyPress = this._handleKeyPress.bind(this);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
     _handleKeyPress(e) {
         if (e.key === 'Enter' && this.refs.addTodoInput.value !== '') {

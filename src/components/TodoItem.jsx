@@ -1,8 +1,13 @@
 import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import classNames from 'classnames';
 import TextInput from './TextInput';
 
 class TodoItem extends React.Component {
+    constructor(props) {
+        super(props);
+        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+    }
     render() {
         var itemClass = classNames({
             'todo': true,
@@ -26,7 +31,8 @@ class TodoItem extends React.Component {
                         onClick={() => this.props.deleteItem(this.props.id)}></button>
             </div>
             <TextInput text={this.props.text}
-
+                       id={this.props.id}
+                       
                        // Passing down the callback functions to TextInput
                        doneEditing={this.props.doneEditing}
                        cancelEditing={this.props.cancelEditing} />

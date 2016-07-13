@@ -1,9 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 import TodoTools from './TodoTools';
 import Footer from './Footer';
+import * as actionCreators from '../action_creators';
 
 var ImmutablePropTypes = require('react-immutable-proptypes');
 
@@ -29,7 +31,7 @@ class TodoApp extends React.Component {
                           todos={this.props.todos}
 
                           // TodoItem funcs
-                          toggleComplete={() => {console.log('=> toggleComplete()');}}
+                          toggleComplete={this.props.toggleComplete}
                           deleteItem={() => {console.log('=> deleteItem()');}}
                           editItem={() => {console.log('=> editItem()');}}
 
@@ -55,7 +57,15 @@ TodoApp.propTypes = {
             status: React.PropTypes.string.isRequired,
             editing: React.PropTypes.bool
         })
-    ).isRequired
+    ).isRequired,
+    toggleComplete: React.PropTypes.func
 };
 
-export default TodoApp;
+function mapStateToProps(state) {
+    return {
+        todos: state.get('todos'),
+        filter: state.get('filter')
+    };
+}
+
+export const TodoAppContainer = connect(mapStateToProps, actionCreators)(TodoApp);
