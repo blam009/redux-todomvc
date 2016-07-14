@@ -33,3 +33,23 @@ export function doneEditing(id, newText) {
         newText
     };
 }
+
+export function clearCompleted() {
+    return {
+        type: 'CLEAR_COMPLETED'
+    };
+}
+
+export function addItem(text) {
+    return {
+        type: 'ADD_ITEM',
+        text
+    };
+}
+
+export function deleteItem(id) {
+    return {
+        type: 'DELETE_ITEM',
+        id
+    }
+}

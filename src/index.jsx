@@ -14,16 +14,12 @@ const createStoreWithDevTools = compose(
 )(createStore);
 const store = createStoreWithDevTools(reducer);
 
-// Dispatch the SET_STATE action holding the desired state
+// Dispatch the SET_STATE action holding the desired initial state
 store.dispatch({
     type: 'SET_STATE',
     state: {
-        todos: [
-            {id: 1, text: 'React', status: 'active'},
-            {id: 2, text: 'Redux', status: 'active'},
-            {id: 3, text: 'Immutable', status: 'completed'}
-        ],
-        filter: 'all'
+        filter: 'all',
+        todos: [],
     }
 });
 

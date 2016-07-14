@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {fromJS} from 'immutable';
 
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
@@ -26,13 +27,13 @@ class TodoApp extends React.Component {
     render() {
         return <div>
             <section className="todoapp">
-                <TodoHeader addItem={(item) => {console.log('=> addItem(' + item + ')');}} />
+                <TodoHeader addItem={this.props.addItem} />
                 <TodoList filter={this.props.filter}
                           todos={this.props.todos}
 
                           // TodoItem funcs
                           toggleComplete={this.props.toggleComplete}
-                          deleteItem={() => {console.log('=> deleteItem()');}}
+                          deleteItem={this.props.deleteItem}
                           editItem={this.props.editItem}
 
                           // TextInput funcs
@@ -41,7 +42,7 @@ class TodoApp extends React.Component {
                 <TodoTools filter={this.props.filter}
                            nbActiveItems={this.getNbActiveItems()}
                            changeFilter={this.props.changeFilter}
-                           clearCompleted={() => {console.log('=> clearCompleted');}} />
+                           clearCompleted={this.props.clearCompleted} />
             </section>
             <Footer />
         </div>;
@@ -57,12 +58,20 @@ TodoApp.propTypes = {
             status: React.PropTypes.string.isRequired,
             editing: React.PropTypes.bool
         })
-    ).isRequired,
+    ),
     toggleComplete: React.PropTypes.func,
     changeFilter: React.PropTypes.func,
     editItem: React.PropTypes.func,
     doneEditing: React.PropTypes.func,
     cancelEditing: React.PropTypes.func,
+    clearCompleted: React.PropTypes.func,
+    addItem: React.PropTypes.func,
+    deleteItem: React.PropTypes.func
+};
+
+TodoApp.defaultProps = {
+    filter: 'all',
+    todos: fromJS([])
 };
 
 function mapStateToProps(state) {
