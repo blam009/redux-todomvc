@@ -33,11 +33,11 @@ class TodoApp extends React.Component {
                           // TodoItem funcs
                           toggleComplete={this.props.toggleComplete}
                           deleteItem={() => {console.log('=> deleteItem()');}}
-                          editItem={() => {console.log('=> editItem()');}}
+                          editItem={this.props.editItem}
 
                           // TextInput funcs
-                          doneEditing={() => {console.log('=> doneEditing');}}
-                          cancelEditing={() => {console.log('=> cancelEditing');}}/>
+                          doneEditing={this.props.doneEditing}
+                          cancelEditing={this.props.cancelEditing}/>
                 <TodoTools filter={this.props.filter}
                            nbActiveItems={this.getNbActiveItems()}
                            changeFilter={this.props.changeFilter}
@@ -59,7 +59,10 @@ TodoApp.propTypes = {
         })
     ).isRequired,
     toggleComplete: React.PropTypes.func,
-    changeFilter: React.PropTypes.func
+    changeFilter: React.PropTypes.func,
+    editItem: React.PropTypes.func,
+    doneEditing: React.PropTypes.func,
+    cancelEditing: React.PropTypes.func,
 };
 
 function mapStateToProps(state) {

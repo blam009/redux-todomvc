@@ -132,4 +132,59 @@ describe('reducer', () => {
             filter: 'active'
         }));
     });
+
+    it('handles EDIT_ITEM by setting editing to true', () => {
+        const initialState = fromJS({
+            todos: [
+                {id: 1, text: 'React', status: 'active', editing: false}
+            ]
+        });
+        const action = {
+            type: 'EDIT_ITEM',
+            id: 1
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState).to.equal(fromJS({
+            todos: [
+                {id: 1, text: 'React', status: 'active', editing: true}
+            ]
+        }));
+    });
+
+    it('handles CANCEL_EDITING by setting editing to false', () => {
+        const initialState = fromJS({
+            todos: [
+                {id: 1, text: 'React', status: 'active', editing: true}
+            ]
+        });
+        const action = {
+            type: 'CANCEL_EDITING',
+            id: 1
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState).to.equal(fromJS({
+            todos: [
+                {id: 1, text: 'React', status: 'active', editing: false}
+            ]
+        }));
+    });
+
+    it('handles DONE_EDITING by updating the text and setting editing to false', () => {
+        const initialState = fromJS({
+            todos: [
+                {id: 1, text: 'React', status: 'active', editing: true}
+            ]
+        });
+        const action = {
+            type: 'DONE_EDITING',
+            id: 1,
+            newText: 'Redux'
+        };
+        const nextState = reducer(initialState, action);
+        expect(nextState).to.equal(fromJS({
+            todos: [
+                {id: 1, text: 'Redux', status: 'active', editing: false}
+            ]
+        }));
+    });
 });
