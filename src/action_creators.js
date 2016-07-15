@@ -1,3 +1,10 @@
+export function setState(state) {
+    return {
+        type: 'SET_STATE',
+        state
+    };
+}
+
 export function toggleComplete(id) {
     return {
         type: 'TOGGLE_COMPLETE',
@@ -51,5 +58,5 @@ export function deleteItem(id) {
     return {
         type: 'DELETE_ITEM',
         id
-    }
+    };
 }

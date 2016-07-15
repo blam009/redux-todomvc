@@ -5,6 +5,7 @@ import createlogger from 'redux-logger';
 import {Provider} from 'react-redux';
 
 import reducer from './reducer';
+import {setState} from './action_creators';
 import {TodoAppContainer} from './components/TodoApp';
 
 require('../node_modules/todomvc-app-css/index.css');
@@ -16,14 +17,11 @@ const store = createStore(reducer, undefined, compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
 
-// Dispatch the SET_STATE action holding the desired initial state
-store.dispatch({
-    type: 'SET_STATE',
-    state: {
-        filter: 'all',
-        todos: [],
-    }
-});
+// Dispatch the setState action creator with the desired initial state
+store.dispatch(setState({
+    filter: 'all',
+    todos: [],
+}));
 
 ReactDOM.render(
     // Wrap the app in a Provider component to pass the store down to the components
